@@ -17,7 +17,7 @@ namespace React603WebScraping.web.Controllers
         [Route("getposts")]        
         public List<TLSResult> ScrapeTLS ()
         {
-            return TLSScraper.GetPosts();
+            return ScrapingManager.GetPosts();
         }
 
     }

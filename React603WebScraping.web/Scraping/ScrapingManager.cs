@@ -11,16 +11,8 @@ using AngleSharp.Html.Parser;
 namespace React603WebScraping.web.Scraping
 {
 
-    public class TLSResult
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Url { get; set; }
-        public string Image { get; set; }
-        public string Summary { get; set; }
-        public string CommentCount { get; set; }
-    }
-    public static class TLSScraper
+    
+    public static class ScrapingManager
 
     {
         public static string GetHtml()
