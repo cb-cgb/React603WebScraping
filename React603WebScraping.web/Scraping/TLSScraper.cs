@@ -11,7 +11,7 @@ using AngleSharp.Html.Parser;
 namespace React603WebScraping.web.Scraping
 {
 
-    public  class TLSResult
+    public class TLSResult
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -52,7 +52,7 @@ namespace React603WebScraping.web.Scraping
 
         private static TLSResult ParseDiv(IElement div)
         {
-            
+
 
             var item = new TLSResult();
             var h2 = div.QuerySelector("h2 a");
@@ -61,7 +61,7 @@ namespace React603WebScraping.web.Scraping
                 return null;
             }
             item.Title = h2.TextContent;
-            
+
 
             //var aTag = h2.QuerySelector("a");
             //if (aTag == null)
@@ -76,14 +76,13 @@ namespace React603WebScraping.web.Scraping
                 return null;
             }
             var summary = pTag.TextContent;
-            var summaryWithoutReadMore = summary.Substring(1, summary.IndexOf("Read more"));
-            item.Summary = summaryWithoutReadMore;
+            item.Summary = SummaryWithoutReadMore(summary);
 
             var imgTag = div.QuerySelector("p a img");
             if (imgTag == null)
             {
                 return null;
-            }            
+            }
             item.Image = imgTag.Attributes["src"].Value;
 
             var commentTag = div.QuerySelector(".backtotop");
@@ -94,6 +93,17 @@ namespace React603WebScraping.web.Scraping
             item.CommentCount = commentTag.TextContent;
 
             return item;
+        }
+
+        private static string SummaryWithoutReadMore(string summary)
+        {
+            var indexofReadMore = summary.IndexOf("Read more");
+            if (indexofReadMore == -1)
+            {
+                return summary;
+            }
+            return summary.Substring(0, indexofReadMore); 
+       
         }
     }
 }
