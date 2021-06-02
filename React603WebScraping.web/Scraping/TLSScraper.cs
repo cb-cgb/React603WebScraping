@@ -76,7 +76,7 @@ namespace React603WebScraping.web.Scraping
                 return null;
             }
             var summary = pTag.TextContent;
-            var summaryWithoutReadMore = summary.Substring(1, summary.IndexOf("Read More"));
+            var summaryWithoutReadMore = summary.Substring(1, summary.IndexOf("Read more"));
             item.Summary = summaryWithoutReadMore;
 
             var imgTag = div.QuerySelector("p a img");
